@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "content/uploads"
+public_folder: "/content/uploads"
+
+collections:
+  - name: "site"
+    label: "Sugar & Sky Website"
+    files:
+      - label: "Website Details"
+        name: "site"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - { label: "Business Name", name: "site_name", widget: "string" }
+          - { label: "Availability Note", name: "availability_note", widget: "text" }
+          - label: "Available Gliders"
+            name: "gliders"
+            widget: "list"
+            label_singular: "Glider"
+            summary: "{{title}} — {{fields.status}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Price", name: "price", widget: "string" }
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options: ["Available", "Reserved", "Sold", "Coming Soon"]
+                default: "Available"
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Cell Number", name: "phone", widget: "string" }
+          - { label: "Location", name: "location", widget: "string" }
